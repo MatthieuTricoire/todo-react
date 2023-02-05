@@ -1,38 +1,194 @@
-.App {
-  text-align: center;
+/* Fonts import */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+:root {
+  /* Fonts */
+  /* fonts family */
+  --ff-primary: Montserrat;
+
+  /* fonts size */
+  --fs-900: 48px;
+  --fs-400: 24px;
+  --fs-300: 22px;
+  --fs-100: 15px;
+
+  /* fonts weight */
+  --fw-bold: 700;
+  --fw-regular: 400;
+
+  /* Color */
+  /* Ligth theme */
+  --clr-ligth-primary: hsla(0, 0%, 66%, 1);
+  --clr-ligth-primary-accent: hsla(249, 61%, 55%, 1);
+  --clr-ligth-secondary-200: hsla(213, 73%, 97%, 1);
+  --clr-ligth-secondary-100: hsla(213, 73%, 99%, 1);
+
+  /* Dark theme */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*? GENERAL  */
+
+img {
+  max-width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  font-family: var(--ff-primary);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-size: var(--fs-900);
+  font-weight: var(--fw-regular);
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background-color: var(--clr-ligth-primary-accent);
+  color: white;
+  padding: 0.3em 0.8em;
+  border-radius: 5px;
+  transition: transform 0.1s;
+}
+button:active {
+  transform: scale(1.1);
+}
+
+/*? Utility  */
+
+.container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.container__small {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+.column {
   display: flex;
   flex-direction: column;
+}
+
+.todo {
+  display: flex;
   align-items: center;
+  gap: 30px;
+}
+
+.taskdone {
+  text-decoration: line-through;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 30%;
+}
+
+/* Header */
+
+.header {
+  height: 80px;
+  align-items: center;
+}
+.header__logo {
+  height: 60%;
+  margin-right: 40px;
+}
+
+/*? addTodo  */
+
+.addTodo {
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.addTodo__input {
+  font-family: inherit;
+  width: 80%;
+  outline: none;
+  border: 1px solid var(--clr-ligth-primary-accent);
+  background-color: var(--clr-ligth-secondary-200);
+  border-radius: 5px;
+  padding-inline: 10px;
+}
+.addTodo__input:hover,
+:focus {
+  border-width: 2px;
+}
+
+/*? TODO */
+
+.todolist {
+  margin-top: 40px;
+  height: 300px;
+  background-color: var(--clr-ligth-secondary-100);
+  padding: 1rem;
+  border-radius: 20px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.todolist::-webkit-scrollbar {
+  display: none;
+}
+.todolist__todo {
+  /* border: 1px red solid; */
+  align-items: center;
+}
+.todolist__todo__btn {
+  color: var(--clr-ligth-primary-accent);
+  background-color: white;
+}
+.todolist__todo__btn--pushed-right {
+  margin-left: auto;
+  background-color: transparent;
+}
+
+/*checkbox styling */
+.todolist__todo__ckb {
+  /*? remove default checkbox appearance */
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: transparent;
+  /* Not removed via appearance */
+  margin: 0;
+  margin-right: 10px;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.1em solid var(--clr-ligth-primary-accent);
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+.todolist__todo__ckb::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 200ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--clr-ligth-primary-accent);
+}
+.todolist__todo__ckb:hover {
+  border: 0.13em solid var(--clr-ligth-primary-accent);
+}
+.todolist__todo__ckb:checked::before {
+  transform: scale(1);
+}
+main {
+  /* border: 2px blue solid; */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  gap: 30px;
 }
